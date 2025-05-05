@@ -1,4 +1,6 @@
 ﻿using ByteBlog.Core.Entities;
+using Microsoft.EntityFrameworkCore;
+using System.Reflection;
 
 namespace ByteBlog.Entity.Entities
 {
@@ -13,7 +15,5 @@ namespace ByteBlog.Entity.Entities
 
         public Guid ImageId { get; set; }
         public Image Image { get; set; }
-
-
     }
 }
