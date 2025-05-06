@@ -1,4 +1,5 @@
-﻿using ByteBlog.Entity.Entities;
+﻿using ByteBlog.Entity.DTOs.Articles;
+using ByteBlog.Entity.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +10,6 @@ namespace ByteBlog.Service.Services.Abstractions
 {
     public interface IArticleService
     {
-        Task<List<Article>> GetAllArticlesAsync();
+        Task<List<ArticleDto>> GetAllArticlesAsync();
     }
 }

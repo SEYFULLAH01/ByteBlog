@@ -1,4 +1,6 @@
-﻿using ByteBlog.Data.UnitOfWorks;
+﻿using AutoMapper;
+using ByteBlog.Data.UnitOfWorks;
+using ByteBlog.Entity.DTOs.Articles;
 using ByteBlog.Entity.Entities;
 using ByteBlog.Service.Services.Abstractions;
 using System;
@@ -12,14 +14,19 @@ namespace ByteBlog.Service.Services.Concrete
     public class ArticleService : IArticleService
     {
         private readonly IUnitOfWork _unitOfWork;
-        public ArticleService(IUnitOfWork unitOfWork)
+        private readonly IMapper mapper;
+
+        public ArticleService(IUnitOfWork unitOfWork, IMapper mapper)
         {
             this._unitOfWork = unitOfWork;
+            this.mapper = mapper;
         }
 
-        public async Task<List<Article>> GetAllArticlesAsync()
+        public async Task<List<ArticleDto>> GetAllArticlesAsync()
         {
-            return await _unitOfWork.GetRepository<Article>().GetAllAsync();
+            var articles = await _unitOfWork.GetRepository<Article>().GetAllAsync();
+            var map = mapper.Map<List<ArticleDto>>(articles);
+            return map;
         }
     }
 }
