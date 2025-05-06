@@ -6,9 +6,12 @@ namespace ByteBlog.Data.Context
 {
     public class AppDbContext : DbContext
     {
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        public AppDbContext()
         {
-            optionsBuilder.UseSqlServer("Server=DESKTOP-PCL5CR6\\SQLEXPRESS;database=ByteBlogDb;integrated security=true");
+
+        }
+        public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
+        {
         }
         public DbSet<Article> Articles { get; set; }
         public DbSet<Category> Categories { get; set; }
@@ -16,7 +19,9 @@ namespace ByteBlog.Data.Context
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
+            base.OnModelCreating(builder);
             builder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
+
         }
     }
 }
