@@ -1,10 +1,11 @@
 ﻿using ByteBlog.Entity.Entities;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection;
 
 namespace ByteBlog.Data.Context
 {
-    public class AppDbContext : DbContext
+    public class AppDbContext : IdentityDbContext<AppUser, AppRole, Guid, AppUserClaim, AppUserRole, AppUserLogin, AppRoleClaim, AppUserToken>
     {
         public AppDbContext()
         {
