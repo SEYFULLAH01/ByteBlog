@@ -11,5 +11,7 @@ namespace ByteBlog.Service.Services.Abstractions
     public interface IArticleService
     {
         Task<List<ArticleDto>> GetAllArticlesAsync();
+        Task CreateArticleAsync(ArticleAddDto articleAddDto);
+        Task AddAsync(ArticleAddDto articleAddDto);
     }
 }
